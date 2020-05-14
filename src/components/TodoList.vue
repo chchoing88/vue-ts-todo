@@ -2,8 +2,11 @@
   <div>
     <h2>TodoList</h2>
     <div v-for="todo in todoList" :key="todo.id">
-      <!-- <TodoItem :todo="todo" :onDeleteTodo="onDeleteTodo" /> -->
-      <TodoItem :props="{ todo, onDeleteTodo }" />
+      <TodoItem
+        :todo="todo"
+        :onDeleteTodo="onDeleteTodo"
+        :onToggleDoneTodo="onToggleDoneTodo"
+      />
     </div>
   </div>
 </template>
@@ -23,5 +26,6 @@ import TodoItem from "@/components/TodoItem.vue";
 export default class TodoList extends Vue {
   @Prop() private todoList!: TodoModel[];
   @Prop() private onDeleteTodo!: (id: number) => void;
+  @Prop() private onToggleDoneTodo!: (id: number) => void;
 }
 </script>
