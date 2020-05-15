@@ -14,6 +14,7 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import {
+  GET_TODOLIST,
   addTodo,
   removeTodo,
   toggleDoneTodo,
@@ -31,12 +32,10 @@ import TodoList from "@/components/TodoList.vue";
   }
 })
 export default class Todo extends Vue {
-  // todoList: TodoModel[] = this.$store.getters["todos/todoList"];
-
   // computed
   get todoList() {
     console.log(this.$store);
-    return this.$store.getters["todos/todoList"];
+    return this.$store.getters[GET_TODOLIST];
   }
 
   onAddTodo(newTodo: string) {

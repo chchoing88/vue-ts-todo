@@ -5,6 +5,9 @@ import Todo from "@/store/models/Todo";
 interface Todos {
   todoList: Todo[];
 }
+// getter 타입
+export const GET_TODOLIST = "todos/todoList";
+
 // 액션 타입
 const ADD_TODO = "todos/addTodo" as const;
 const REMOVE_TODO = "todos/removeTodo" as const;
