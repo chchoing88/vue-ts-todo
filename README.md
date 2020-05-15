@@ -2,7 +2,7 @@
 
 ## 문제인식
 
-- Vuex와 Vue Component 연동시 `string` 많은 부분을 타입으로 바인딩 하기 때문에 typescript의 자동완성 기능을 사용할 수 가 없습닏다.
+- Vuex와 Vue Component 연동시 `string` 많은 부분을 타입으로 바인딩 하기 때문에 typescript의 자동완성 기능을 사용할 수 가 없습다.
 
 ## 목표
 
