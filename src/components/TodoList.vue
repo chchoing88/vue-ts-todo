@@ -6,6 +6,7 @@
         :todo="todo"
         :onDeleteTodo="onDeleteTodo"
         :onToggleDoneTodo="onToggleDoneTodo"
+        :onToggleEditTodo="onToggleEditTodo"
       />
     </div>
   </div>
@@ -27,5 +28,6 @@ export default class TodoList extends Vue {
   @Prop() private todoList!: TodoModel[];
   @Prop() private onDeleteTodo!: (id: number) => void;
   @Prop() private onToggleDoneTodo!: (id: number) => void;
+  @Prop() private onToggleEditTodo!: (id: number, name: string) => void;
 }
 </script>

@@ -4,7 +4,7 @@
       type="text"
       :value="newTodo"
       @input="inputNewTodo"
-      @keyup.enter="addTodo"
+      @keypress.enter="addTodo"
     />
   </div>
 </template>
@@ -29,10 +29,10 @@ export default class TodoForm extends Vue {
   }
 
   addTodo() {
-    // this.$store.dispatch("todos/addTodo", this.newTodo);
-    // this.$emit("update:merline", "aa");
-    this.onAddTodo(this.newTodo);
-    this.initNewTodo();
+    if (this.newTodo) {
+      this.onAddTodo(this.newTodo);
+      this.initNewTodo();
+    }
   }
 }
 </script>

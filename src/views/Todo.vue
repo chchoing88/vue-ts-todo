@@ -6,13 +6,19 @@
       :todoList="todoList"
       :onDeleteTodo="onDeleteTodo"
       :onToggleDoneTodo="onToggleDoneTodo"
+      :onToggleEditTodo="onToggleEditTodo"
     />
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import { addTodo, removeTodo, toggleDoneTodo } from "@/store/modules/todos";
+import {
+  addTodo,
+  removeTodo,
+  toggleDoneTodo,
+  toggleEditTodo
+} from "@/store/modules/todos";
 
 import TodoForm from "@/components/TodoForm.vue";
 import TodoList from "@/components/TodoList.vue";
@@ -46,6 +52,9 @@ export default class Todo extends Vue {
   onToggleDoneTodo(id: number) {
     // this.$store.dispatch("todos/toggleDoneTodo", id);
     this.$store.dispatch(toggleDoneTodo(id));
+  }
+  onToggleEditTodo(id: number, name: string) {
+    this.$store.dispatch(toggleEditTodo(id, name));
   }
 }
 </script>

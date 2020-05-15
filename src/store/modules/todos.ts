@@ -9,15 +9,22 @@ interface Todos {
 const ADD_TODO = "todos/addTodo" as const;
 const REMOVE_TODO = "todos/removeTodo" as const;
 const TOGGLE_DONE_TODO = "todos/toggleDoneTodo" as const;
+const TOGGLE_EDIT_TODO = "todos/toggleEditTodo" as const;
 
 // 액션 생성자
 export const addTodo = (newTodo: string) => ({ type: ADD_TODO, newTodo });
 export const removeTodo = (id: number) => ({ type: REMOVE_TODO, id });
 export const toggleDoneTodo = (id: number) => ({ type: TOGGLE_DONE_TODO, id });
+export const toggleEditTodo = (id: number, name: string) => ({
+  type: TOGGLE_EDIT_TODO,
+  id,
+  name
+});
 
 type AddTodo = ReturnType<typeof addTodo>;
 type RemoveTodo = ReturnType<typeof removeTodo>;
 type ToggleDoneTodo = ReturnType<typeof toggleDoneTodo>;
+type ToggleEditTodo = ReturnType<typeof toggleEditTodo>;
 
 // 모듈
 const todos: Module<Todos, RootState> = {
@@ -27,6 +34,7 @@ const todos: Module<Todos, RootState> = {
   },
   getters: { todoList: state => state.todoList },
   mutations: {
+    // SET / GET / REMOVE
     SET_ADD_TODO(state, payload: AddTodo) {
       state.todoList = state.todoList.concat([new Todo(payload.newTodo)]);
     },
@@ -37,6 +45,18 @@ const todos: Module<Todos, RootState> = {
       state.todoList = state.todoList.map(todo => {
         if (todo.id === payload.id) {
           todo.isDone = !todo.isDone;
+        }
+        return todo;
+      });
+    },
+    SET_TOGGLE_EDIT_TODO(state, payload: ToggleEditTodo) {
+      state.todoList = state.todoList.map(todo => {
+        if (todo.id === payload.id) {
+          todo.isEdit = !todo.isEdit;
+        }
+        if (!todo.isEdit) {
+          console.log(payload.name);
+          todo.name = payload.name;
         }
         return todo;
       });
@@ -51,6 +71,9 @@ const todos: Module<Todos, RootState> = {
     },
     toggleDoneTodo({ commit }, payload: ToggleDoneTodo) {
       commit("SET_TOGGLE_DONE_TODO", payload);
+    },
+    toggleEditTodo({ commit }, payload: ToggleEditTodo) {
+      commit("SET_TOGGLE_EDIT_TODO", payload);
     }
   }
 };
