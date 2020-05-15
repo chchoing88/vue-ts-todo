@@ -28,6 +28,43 @@
 ### 기타
 
 - [고민] `vuex-class` 를 사용하면 더 간단하게 Component에서 vuex를 바인딩 할 수 있지만.. Decoration이 늘어난다는게 좋을까??
+- page에 해당하는 `views` 폴더에 있는 component 에서만 store 접근하게 두었으나, `한단계 아래 컴포넌트에서도 Vuex store에 접근`해도 괜찮을 거 같습니다.
+
+## 폴더 구조
+
+```md
+├── README.md
+├── babel.config.js
+├── package-lock.json
+├── package.json
+├── public
+|  ├── favicon.ico
+|  └── index.html
+├── src
+|  ├── App.vue
+|  ├── assets
+|  |  └── logo.png
+|  ├── components       // components
+|  |  ├── HelloWorld.vue
+|  |  ├── TodoForm.vue
+|  |  ├── TodoItem.vue
+|  |  └── TodoList.vue
+|  ├── main.ts
+|  ├── router
+|  |  └── index.ts
+|  ├── shims-tsx.d.ts
+|  ├── shims-vue.d.ts
+|  ├── store
+|  |  ├── index.ts      // root store
+|  |  ├── models
+|  |  |  └── Todo.ts    // Todo model
+|  |  └── modules
+|  |     └── todos.ts   // Vuex module todo
+|  └── views            // page
+|     ├── Home.vue
+|     └── Todo.vue
+└── tsconfig.json
+```
 
 ### 장점
 
