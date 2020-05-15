@@ -35,6 +35,7 @@ export default class Todo extends Vue {
   // computed
   get todoList() {
     console.log(this.$store);
+    // this.$store.getter["todos/todoList"]
     return this.$store.getters[GET_TODOLIST];
   }
 
