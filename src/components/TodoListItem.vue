@@ -28,7 +28,7 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 import TodoModel from "@/store/models/Todo";
 
 @Component
-export default class TodoItem extends Vue {
+export default class TodoListItem extends Vue {
   private editTodo = "";
 
   @Prop() readonly todo!: TodoModel; // ! -> Nullable 이라고합니다. 느낌표를 붙이면 null과 undefind를 허용합니다. 즉 초기화 하지 않아도 됩니다.

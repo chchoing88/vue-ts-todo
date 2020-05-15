@@ -2,7 +2,7 @@
   <div>
     <h2>TodoList</h2>
     <div v-for="todo in todoList" :key="todo.id">
-      <TodoItem
+      <TodoListItem
         :todo="todo"
         :onDeleteTodo="onDeleteTodo"
         :onToggleDoneTodo="onToggleDoneTodo"
@@ -16,12 +16,12 @@
 import { Component, Prop, Vue } from "vue-property-decorator";
 import TodoModel from "@/store/models/Todo";
 
-import TodoItem from "@/components/TodoItem.vue";
+import TodoListItem from "@/components/TodoListItem.vue";
 
 // https://class-component.vuejs.org/guide/class-component.html#other-options
 @Component({
   components: {
-    TodoItem
+    TodoListItem
   }
 })
 export default class TodoList extends Vue {
